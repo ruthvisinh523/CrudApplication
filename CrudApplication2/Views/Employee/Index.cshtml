@@ -1,0 +1,110 @@
+﻿@model IEnumerable<CrudApplication2.Models.EmployeeModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="EmployeeCreate">Create New</a>
+</p>
+
+
+<b style="color:green">@TempData["Statesuccess"]</b>
+<b style="color:green">@TempData["StateSuccessDelete"]</b>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.EmployeeId)</th>
+
+            <th>@Html.DisplayNameFor(model => model.FName)</th>
+            <th>@Html.DisplayNameFor(model => model.LName)</th>
+            <th>@Html.DisplayNameFor(model => model.Gender)</th>
+            <th>@Html.DisplayNameFor(model => model.Age)</th>
+            <th>@Html.DisplayNameFor(model => model.Email)</th>
+            <th>@Html.DisplayNameFor(model => model.ContectNo)</th>
+            <th>@Html.DisplayNameFor(model => model.DOB)</th>
+            <th>@Html.DisplayNameFor(model => model.CityName)</th>
+            <th>@Html.DisplayNameFor(model => model.StateName)</th>
+            <th>@Html.DisplayNameFor(model => model.IsActive)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+       
+        @foreach (var item in Model)
+        {
+            <tr>
+               
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LName)
+                </td>g
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContectNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CityName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StateName)
+                </td>
+
+                <td>
+                    <span class="circle @(item.IsActive ? "green" : "red")">
+                        <i class="fas fa-circle"></i>
+                    </span>
+                </td>
+
+                <td>
+                    <a asp-action="EmployeeUpDate" asp-route-id="@item.EmployeeId">Edite</a>
+                    <a asp-action="EmployeeDetails" asp-route-id="@item.EmployeeId">Details</a>
+                    <a asp-action="EmployeeDelete" asp-route-id="@item.EmployeeId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .circle {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        line-height: 50px;
+        border-radius: 50%;
+        text-align: center;
+        color: white;
+    }
+
+    .green {
+        background-color: green;
+    }
+
+    .red {
+        background-color: red;
+    }
+
+</style>
+
+

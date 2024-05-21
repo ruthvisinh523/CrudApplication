@@ -1,0 +1,50 @@
+﻿@model CrudApplication2.Models.StateModel
+@{
+    ViewData["Title"] = "StateUpDate";
+}
+
+<h1>StateUpDate</h1>
+<h4>State</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="StateUpDate" method="post" role="form">
+
+
+            <input type="hidden" asp-for="StateId" />
+            <div class="form-group">
+                <label asp-for="StateName"></label>
+                <div class="col-md-5">
+
+                    <input asp-for="StateName" class="form-control" />
+                    <span asp-validation-for="StateName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IsActive"></label>
+                <div class="col-md-5">
+
+                    <input type="checkbox" asp-for="IsActive" />
+
+                </div>
+            </div>
+
+
+
+
+            <div class="from-group">
+                <div class="col-md-offset-2 col-md-5">
+                    <input type="submit" class="btn- btn-primary" value="Submit" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<br />
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

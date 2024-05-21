@@ -1,0 +1,54 @@
+﻿@model CrudApplication2.Models.CityModel;
+@{
+    ViewData["Title"] = "CityUpdate";
+}
+
+<h1>CityUpdate</h1>
+
+
+
+
+<h1>CityUpdate</h1>
+<h4>City</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CityUpdate" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CityId" />
+            <div class="form-group">
+                <label asp-for="CityName" class="control-label"></label>
+                <input asp-for="CityName" class="form-control" />
+                <span asp-validation-for="CityName" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="StateName" class="control-label"></label>
+                <select class="form-control" asp-for="StateId"
+                        asp-items="@Model.listStateModels">
+                    <option>Please select one</option>
+                </select>
+                <span asp-validation-for="StateId" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="IsActive" class="control-label"></label>
+                <input asp-for="IsActive" type="checkbox" />
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="CityUpdate" class="btn- btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

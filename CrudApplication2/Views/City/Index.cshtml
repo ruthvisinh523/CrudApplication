@@ -1,0 +1,99 @@
+﻿ @model IEnumerable<CrudApplication2.Models.CityModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+
+
+
+
+
+<h2>Index</h2>
+<p>
+    <a asp-action="CityCreate">Create New</a>
+</p>
+
+<b style="color:green">@TempData["CitySuccessInsert"]</b>
+<b style="color:green">@TempData["CitySuccessUpdate"]</b>
+<b style="color:green">@TempData["CitySuccessDelete"]</b>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CityId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CityName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StateName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 1;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => i)
+                </td>
+                @{
+                    ++i;
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.CityName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StateName)
+                </td>
+                <td>
+                    <span class="circle @(item.IsActive ? "green" : "red")">
+                        <i class="fas fa-circle"></i>
+                    </span>
+                </td>
+
+                <td>
+                    <a asp-action="CityUpdate" asp-route-id="@item.CityId">Edit</a> |
+                    <a asp-action="CityDetails" asp-route-id="@item.CityId">Details</a> |
+                    <a asp-action="CityDelete" asp-route-id="@item.CityId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .circle {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        line-height: 50px;
+        border-radius: 50%;
+        text-align: center;
+        color: white;
+    }
+
+    .green {
+        background-color: green;
+    }
+
+    .red {
+        background-color: red;
+    }
+
+</style>
+

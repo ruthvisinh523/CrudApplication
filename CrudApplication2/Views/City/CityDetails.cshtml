@@ -1,0 +1,49 @@
+﻿@model CrudApplication2.Models.CityModel;
+@{
+    ViewData["Title"] = "CityDetails";
+}
+
+<h1>CityDetails</h1>
+
+
+
+
+<h1>Details</h1>
+
+<div>
+    <h4>City</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CityId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CityId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CityName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CityName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StateId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StateId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="CityUpdate" asp-route-id="@Model.CityId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+

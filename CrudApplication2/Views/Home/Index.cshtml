@@ -1,0 +1,78 @@
+﻿@model IEnumerable<CrudApplication2.Models.StateModel>
+  
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@* <div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div> *@
+
+<p>
+    <a asp-action="StateCreate">Create New</a>
+</p> 
+
+
+<b style="color:green">@TempData["Statesuccess"]</b>
+<b style="color:green">@TempData["StateSuccessDelete"]</b>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model=>model.StateId)</th>
+           
+            <th>@Html.DisplayNameFor(model => model.StateName)</th>
+            <th>@Html.DisplayNameFor(model => model.IsActive)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem=>item.StateId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StateName)
+                </td>
+               
+                <td>
+                    <span class="circle @(item.IsActive ? "green" : "red")"><i class="fas fa-circle"></i>
+                    </span>
+                </td>
+
+                <td>
+                    <a asp-action="StateUpDate" asp-route-id="@item.StateId">Edite</a>
+                    <a asp-action="Details" asp-route-id="@item.StateId">Details</a>
+                    <a asp-action="StateDelete" asp-route-id="@item.StateId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .circle {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        line-height: 50px;
+        border-radius: 50%;
+        text-align: center;
+        color: white;
+    }
+
+    .green {
+        background-color: green;
+    }
+
+    .red {
+        background-color: red;
+
+    }
+
+</style>
+
